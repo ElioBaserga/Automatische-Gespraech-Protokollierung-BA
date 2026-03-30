@@ -8,17 +8,22 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 import tempfile
+import json
 
-# 1. Upload-Feld
-uploaded_file = st.file_uploader("Upload Gespräch", type=["mp3", "wav", "m4a"])
+# Wird benötigt, damit nach dem JSON-Download die Seite nicht komplett neu lädt und die vorherige Ausgabe verschwindet
+if "llm_answer" not in st.session_state:
+    st.session_state.llm_answer = None
 
-# 2. Kommentarfeld
+uploaded_file = st.file_uploader("Upload Gespräch:")
+
 user_question = st.text_area("Fragen:")
 
-# 3. Start-Button
+llm_choice = st.selectbox("Wähle das Sprachmodell:", ["GPT-4o-mini", "Meta Llama 3 8B"])
+
 if st.button("Start Protokollierung"):
     if uploaded_file is not None and user_question.strip():
-        # 4. Ladebalken
+
+        # Ladebalken
         progress_bar = st.progress(0)
 
         # Hochgeladene Datei kurz zwischenspeichern, damit Whisper/librosa einen Dateipfad haben
@@ -108,17 +113,32 @@ if st.button("Start Protokollierung"):
 
         # LLM Abfrage (user_question kommt jetzt aus dem Streamlit text_area)
         
-        def ask_openai(transcript: str, question: str, api_key: str) -> str:
-            client = OpenAI(api_key=api_key)
-
-            prompt = f"""Hier ist das Transkript eines Interviews:\n\n{transcript}\n\nBasierend auf diesem Transkript, beantworte bitte folgende Frage:\n{question}"""
+        def ask_llm(transcript: str, question: str, api_key: str, choice: str) -> str:
             
+            if choice == "GPT-4o-mini":
+                client = OpenAI(api_key=api_key)
+                model_name = "gpt-4o-mini"
+            else:
+                # Die OpenAI Library wird verwendet, um ollama lokal aufzurufen
+                client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+                model_name = "llama3"
+
+            # Prompt zwingt das LLM, JSON zu generieren
+            prompt = f"""Hier ist das Transkript eines Interviews:\n\n{transcript}\n\n
+            Das Transkript ist ein Gespräch zwischen einer Person, die Fragen stellt und eine Person, die antwortet.\n\n
+            Beantworte bitte die folgenden Fragen jeweils mit einem ganzen Satz: {question}\n\n
+            Gib die Antwort AUSSCHLIESSLICH als gültiges JSON in folgendem Format zurück (ohne Markdown-Codeblöcke):
+            [
+                {{"frage": "Die erste Frage", "antwort": "Die Antwort dazu"}},
+                {{"frage": "Die zweite Frage", "antwort": "Die Antwort dazu"}}
+            ]"""
+
             try:
                 response = client.chat.completions.create(
-                    model="gpt-4o-mini",
+                    model=model_name,
                     # role: system: Leitplanken für die KI; role: user: die eigentliche Frage, die an die KI gestellt wird
                     messages=[
-                        {"role": "system", "content": "Du bist ein Assistent, der Fragen zu Audio-Transkripten beantwortet."},
+                        {"role": "system", "content": "Du bist ein Assistent, der Fragen zu Audio-Transkripten beantwortet und ausschließlich JSON ausgibt."},
                         {"role": "user", "content": prompt}
                     ],
                     # 0.7 ist ein guter Wert, um eine kreative Antwort zu bekommen, aber nicht zu verrückt; je höher, desto kreativer, je niedriger, desto fokussierter auf die Fakten
@@ -129,14 +149,28 @@ if st.button("Start Protokollierung"):
             except Exception as e:
                 return f"Fehler bei der OpenAI-API-Anfrage: {e}"
             
-        llm_answer = ask_openai(full_transcript, user_question, openai_api_key)
-        progress_bar.progress(100)
+        llm_answer = ask_llm(full_transcript, user_question, openai_api_key, llm_choice)
 
-        print(llm_answer)
-        
-        # Ausgabe im GUI (zwingend nötig, da print() in Streamlit nur ins unsichtbare Terminal im Hintergrund druckt)
-        st.write(llm_answer)
+        # Antwort im Speicher ablegen, damit sie auch nach einem Seiten-Reload noch verfügbar ist
+        st.session_state.llm_answer = llm_answer
+
+        progress_bar.progress(100)
 
         # Temporäre Datei löschen
         if os.path.exists(audio_file):
             os.remove(audio_file)
+
+if st.session_state.llm_answer is not None:
+    answer_data = json.loads(st.session_state.llm_answer)
+        
+    for item in answer_data:
+        st.write(f"Frage: {item.get('frage', '')}")
+        st.write(f"Antwort: {item.get('antwort', '')}")
+        st.write("") # leere Zeile
+
+    st.download_button(
+        label="Download JSON",
+        data=st.session_state.llm_answer,
+        file_name="llm_output.json",
+        mime="application/json"
+    )
