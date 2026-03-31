@@ -104,7 +104,7 @@ if st.button("Start Protokollierung"):
                         break
                     
             line = f"[{start:5.2f}s - {end:5.2f}s] {speaker}: {text}"
-            print(line)
+            # print(line)
             transcript_lines.append(line)
 
         # Liste zu einem einzigen String zusammenfügen
@@ -131,27 +131,41 @@ if st.button("Start Protokollierung"):
             prompt = f"""Hier ist das Transkript eines Interviews:\n\n{transcript}\n\n
             Das Transkript ist ein Gespräch zwischen einer Person, die Fragen stellt und eine Person, die antwortet.\n\n
             Beantworte bitte die folgenden Fragen jeweils mit einem ganzen Satz: {question}\n\n
-            Gib die Antwort AUSSCHLIESSLICH als gültiges JSON in folgendem Format zurück (ohne Markdown-Codeblöcke):
+            WICHTIGE REGELN FÜR DIE AUSGABE:
+            1. Du MUSST ein valides JSON-Array zurückgeben.
+            2. Verwende NIEMALS Markdown-Formatierung (wie ```json).
+            3. Beginne deine Antwort direkt mit [ und ende direkt mit ].
+            4. Schreibe keinen erklärenden Text davor oder danach.
+            
+            Format:
             [
                 {{"frage": "Die erste Frage", "antwort": "Die Antwort dazu"}},
                 {{"frage": "Die zweite Frage", "antwort": "Die Antwort dazu"}}
             ]"""
 
-            try:
-                response = client.chat.completions.create(
-                    model=model_name,
-                    # role: system: Leitplanken für die KI; role: user: die eigentliche Frage, die an die KI gestellt wird
-                    messages=[
-                        {"role": "system", "content": "Du bist ein Assistent, der Fragen zu Audio-Transkripten beantwortet und ausschließlich JSON ausgibt."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    # 0.7 ist ein guter Wert, um eine kreative Antwort zu bekommen, aber nicht zu verrückt; je höher, desto kreativer, je niedriger, desto fokussierter auf die Fakten
-                    temperature=0.7
-                )
-                # Die Antwort der KI zurückgeben
-                return response.choices[0].message.content
-            except Exception as e:
-                return f"Fehler bei der OpenAI-API-Anfrage: {e}"
+            # Maximal 3 Versuche um ein gültiges JSON zu erstellen
+            for versuch in range(3):
+                try:
+                    response = client.chat.completions.create(
+                        model=model_name,
+                        # role: system: Leitplanken für die KI; role: user: die eigentliche Frage, die an die KI gestellt wird
+                        messages=[
+                            {"role": "system", "content": "Du bist ein Assistent, der Fragen zu Audio-Transkripten beantwortet und ausschließlich JSON ausgibt."},
+                            {"role": "user", "content": prompt}
+                        ],
+                        # 0.7 ist ein guter Wert, um eine kreative Antwort zu bekommen, aber nicht zu verrückt; je höher, desto kreativer, je niedriger, desto fokussierter auf die Fakten
+                        temperature=0.7
+                    )
+                    # Die Antwort der KI auslesen
+                    ans = response.choices[0].message.content.strip()
+                    
+                    # prüfen, ob das Resultat gültiges JSON ist
+                    json.loads(ans) 
+                    return ans
+                except Exception as e:
+                    print(f"Versuch {versuch+1} gescheitert. LLM hat kein reines JSON geliefert.")
+                    continue
+            return '[{"frage": "Systemfehler", "antwort": "Das LLM konnte nach 3 Versuchen kein gültiges JSON generieren."}]'
             
         llm_answer = ask_llm(full_transcript, user_question, openai_api_key, llm_choice)
 
