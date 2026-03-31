@@ -18,7 +18,7 @@ uploaded_file = st.file_uploader("Upload Gespräch:")
 
 user_question = st.text_area("Fragen:")
 
-llm_choice = st.selectbox("Wähle das Sprachmodell:", ["GPT-4o-mini", "Meta Llama 3 8B"])
+llm_choice = st.selectbox("Wähle das Sprachmodell:", ["GPT-4o-mini", "Meta Llama 3 8B", "DeepSeek R1"])
 
 if st.button("Start Protokollierung"):
     if uploaded_file is not None and user_question.strip():
@@ -114,14 +114,18 @@ if st.button("Start Protokollierung"):
         # LLM Abfrage (user_question kommt jetzt aus dem Streamlit text_area)
         
         def ask_llm(transcript: str, question: str, api_key: str, choice: str) -> str:
-            
+
             if choice == "GPT-4o-mini":
                 client = OpenAI(api_key=api_key)
                 model_name = "gpt-4o-mini"
-            else:
+            elif choice == "Meta Llama 3 8B":
                 # Die OpenAI Library wird verwendet, um ollama lokal aufzurufen
                 client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
                 model_name = "llama3"
+            elif choice == "DeepSeek R1":
+                # DeepSeek R1 wird auch über ollama lokal aufgerufen
+                client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+                model_name = "deepseek-r1"
 
             # Prompt zwingt das LLM, JSON zu generieren
             prompt = f"""Hier ist das Transkript eines Interviews:\n\n{transcript}\n\n
