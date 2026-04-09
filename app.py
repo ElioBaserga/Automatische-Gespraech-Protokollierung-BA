@@ -130,7 +130,8 @@ if st.button("Start Protokollierung"):
             # Prompt zwingt das LLM, JSON zu generieren
             prompt = f"""Hier ist das Transkript eines Interviews:\n\n{transcript}\n\n
             Das Transkript ist ein Gespräch zwischen einer Person, die Fragen stellt und eine Person, die antwortet.\n\n
-            Beantworte bitte die folgenden Fragen jeweils mit einem ganzen Satz: {question}\n\n
+            Wenn im Transkript Aussagen doppelt vorkommen, ist zusätzlich ein Dolmetscher am Gespräch beteiligt.\n\n
+            Beantworte bitte die folgenden Fragen jeweils mit einem ausführlichen Satz mit 20 - 30 Wörtern: {question}\n\n
             WICHTIGE REGELN FÜR DIE AUSGABE:
             1. Du MUSST ein valides JSON-Array zurückgeben.
             2. Verwende NIEMALS Markdown-Formatierung (wie ```json).
