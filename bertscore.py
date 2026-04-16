@@ -2,7 +2,7 @@ import json
 import os
 from bert_score import score
 
-generated_file = "generatedProtocols/GPT-4o-mini/Akanji_GPT-4o-mini.json"
+generated_file = "generatedProtocols/DeepSeekR1/deepseek_Akanji.json"
 reference_file = "referenceProtocols/Akanji-Original-Protocol.json"
 
 # JSON-Dateien einlesen
