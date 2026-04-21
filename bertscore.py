@@ -2,8 +2,8 @@ import json
 import os
 from bert_score import score
 
-generated_file = "generatedProtocols/DeepSeekR1/deepseek_Akanji.json"
-reference_file = "referenceProtocols/Akanji-Original-Protocol.json"
+generated_file = "generatedProtocols/Claude/claude_Waelti.json"
+reference_file = "referenceProtocols/Waelti-Original-Protocol.json"
 
 # JSON-Dateien einlesen
 with open(generated_file, 'r', encoding='utf-8') as f:
