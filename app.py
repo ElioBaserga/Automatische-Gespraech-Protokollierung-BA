@@ -90,7 +90,7 @@ if st.button("Start Protokollierung"):
                 # itertracks gibt die Zeitintervalle zurück
                 tracks = list(diarization.itertracks(yield_label=True))
 
-                # Wir speichern das gesamte Transkript in einer Liste, um es später an OpenAI zu senden
+                # Wir speichern das gesamte Transkript in einer Liste, um es später an ein LLM zu senden
                 transcript_lines = []
 
                 # Segmente von Whisper durchgehen und die Sprecherinformationen von pyannote danach anhängen
@@ -112,7 +112,7 @@ if st.button("Start Protokollierung"):
                                 break
                             
                     line = f"[{start:5.2f}s - {end:5.2f}s] {speaker}: {text}"
-                    # print(line)
+                    print(line)
                     transcript_lines.append(line)
 
                 # Liste zu einem einzigen String zusammenfügen

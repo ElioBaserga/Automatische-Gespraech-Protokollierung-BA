@@ -1,0 +1,57 @@
+[
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 0.0,
+        "ende": 33.11
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 33.11,
+        "ende": 83.81
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 83.81,
+        "ende": 106.33
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 106.33,
+        "ende": 143.81
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 143.81,
+        "ende": 152.31
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 152.31,
+        "ende": 195.39
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 195.39,
+        "ende": 204.68
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 206.17,
+        "ende": 207.08
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 208.5,
+        "ende": 226.42
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 226.42,
+        "ende": 254.48
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 254.48,
+        "ende": 274.19
+    }
+]

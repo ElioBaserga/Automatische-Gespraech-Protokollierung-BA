@@ -18,11 +18,11 @@ def lade_json(dateipfad):
     return annotation
 
 # Dateien in pyannote-Objekte umwandeln
-referenz = lade_json("referenceDiarization/Akanji-Original-Diarization.json")
-hypothese = lade_json("generatedDiarization/Akanji-Generated-Diarization.json")
+referenz = lade_json("referenceDiarization/Waelti-reference-diarization.json")
+generated = lade_json("generatedDiarization/Waelti-generated-diarization.json")
 
 # collar in Sekunden, um kleine zeitliche Abweichungen zu tolerieren
-der_metrik = DiarizationErrorRate(collar=0.25)
-fehlerquote = der_metrik(referenz, hypothese)
+der_metrik = DiarizationErrorRate(collar=0.5)
+fehlerquote = der_metrik(referenz, generated)
 
-print(f"{fehlerquote:.2f}")
+print(f"{fehlerquote:.2%}")

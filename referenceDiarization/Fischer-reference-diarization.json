@@ -1,0 +1,137 @@
+[
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 0.0,
+        "ende": 13.05
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 13.05,
+        "ende": 78.4
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 78.4,
+        "ende": 85.99
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 85.99,
+        "ende": 99.84
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 99.84,
+        "ende": 113.54
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 113.54,
+        "ende": 136.62
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 136.62,
+        "ende": 141.7
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 141.7,
+        "ende": 164.3
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 164.3,
+        "ende": 178.99
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 178.99,
+        "ende": 218.25
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 218.25,
+        "ende": 218.73
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 218.73,
+        "ende": 219.75
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 219.75,
+        "ende": 222.73
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 222.73,
+        "ende": 244.49
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 246.66,
+        "ende": 252.5
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 252.5,
+        "ende": 318.38
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 318.38,
+        "ende": 337.68
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 337.68,
+        "ende": 376.39
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 376.39,
+        "ende": 383.96
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 383.96,
+        "ende": 428.99
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 428.99,
+        "ende": 431.71
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 431.71,
+        "ende": 442
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 442,
+        "ende": 447.61
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 447.61,
+        "ende": 458.13
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 458.13,
+        "ende": 460.54
+    },
+    {
+        "sprecher": "SPEAKER_01",
+        "start": 460.54,
+        "ende": 482.28
+    },
+    {
+        "sprecher": "SPEAKER_00",
+        "start": 482.28,
+        "ende": 500.46
+    }
+]

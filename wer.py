@@ -1,14 +1,26 @@
 from jiwer import wer
+import jiwer
 
-ref_file = "referenceTranscript/Akanji-Original-Transcript.txt"
-gen_file = "generatedTranscript/Akanji-Generated-Transcript.txt"
+ref_file = "referenceTranscripts/Akanji-reference-transcript.txt"
+gen_file = "generatedTranscripts/Akanji-generated-transcript.txt"
 
-# Inhalte aus den Dateien lesen
+# Dateien einlesen
 with open(ref_file, "r", encoding="utf-8") as r, open(gen_file, "r", encoding="utf-8") as g:
     referenz = r.read()
     generated = g.read()
 
-# WER berechnen
-fehlerquote = wer(referenz, generated)
+# Bereinigung
+bereinigung = jiwer.Compose([
+    jiwer.ToLowerCase(),
+    jiwer.RemovePunctuation(),
+    jiwer.RemoveMultipleSpaces(),
+    jiwer.Strip(),
+])
 
-print(fehlerquote)
+ref_bereingt = bereinigung(referenz)
+gen_bereingt = bereinigung(generated)
+
+# WER berechnen
+fehlerquote = wer(ref_bereingt, gen_bereingt)
+
+print(f"{fehlerquote:.2%}")
