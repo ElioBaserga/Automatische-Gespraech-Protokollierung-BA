@@ -27,23 +27,23 @@ venv\Scripts\activate
 ```
 
 #### Abhängigkeiten installieren:
-```bash
-pip install streamlit librosa pyannote.audio openai python-dotenv bert-score jiwer pyannote.metrics
-```
 
-##### Whisper installieren für die..
+##### Installation mit..
 CPU:
 ```bash
-pip install openai-whisper
+pip install pyannote.audio torch torchvision torchaudio
 ```
 GPU:
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install pyannote.audio torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
 ```
-```bash
-pip install openai-whisper
-```
+
 <br>
+
+##### Weitere packages
+```bash
+pip install openai-whisper streamlit librosa openai python-dotenv bert-score jiwer pyannote.metrics
+```
 
 #### .env Datei erstellen:
 ```properties
