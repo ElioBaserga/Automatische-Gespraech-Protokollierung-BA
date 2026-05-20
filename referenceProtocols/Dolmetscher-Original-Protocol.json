@@ -1,0 +1,34 @@
+[
+  {
+    "frage": "Frau Berg, bevor wir anfangen, woher kommen Sie?",
+    "antwort": "Sie kommt aus Polen, aus Kattowitz."
+  },
+  {
+    "frage": "Sie sprechen gar kein Deutsch?",
+    "antwort": "Nein, eigentlich nicht."
+  },
+  {
+    "frage": "Was haben Sie für Beschwerden?",
+    "antwort": "Sie hat seit gestern ein schreckliches Erstickungsgefühl und Schmerzen im Brustkorbbereich."
+  },
+  {
+    "frage": "Können Sie mir bitte erzählen was gestern Abend passiert ist?",
+    "antwort": "Sie hat in der Hotelbar Fisch gegessen und zwei bis drei Gläser Wein getrunken. Danach wurde ihr schrecklich übel, ihr Herz fühlte sich wie zugeschnürt an, sie hatte ein Erstickungsgefühl in der Brust und musste sich in der Nacht übergeben."
+  },
+  {
+    "frage": "Können Sie bitte noch mal wortwörtlich übersetzen was die Patientin gesagt hat?",
+    "antwort": "Sie war in einer Bar, hat Wein getrunken und etwas gegessen. Danach ist ihr übel geworden und sie hatte Brustschmerzen, von denen sie dachte, es wäre das Herz."
+  },
+  {
+    "frage": "Frau Berg, bekommen Sie gut Luft?",
+    "antwort": "Sie sagt, es ist ein bisschen stickig, aber es ist nicht so schlimm."
+  },
+  {
+    "frage": "Was sind Sie von Beruf?",
+    "antwort": "Sie ist Reporterin für eine Frauenzeitung namens Olivia."
+  },
+  {
+    "frage": "Wie lange werde ich noch im Krankenhaus bleiben müssen, oder kann ich nach diesen Untersuchungen gleich nach Hause gehen, oder wie sieht das aus?",
+    "antwort": "Es hängt stark von den Befunden ab. Dies können wir am Nachmittag besprechen."
+  }
+]

@@ -1,11 +1,11 @@
 from jiwer import wer
 import jiwer
 
-ref_file = "referenceTranscripts/Akanji-reference-transcript.txt"
-gen_file = "generatedTranscripts/Akanji-generated-transcript.txt"
+reference_file = "referenceTranscripts/Dolmetscher-reference-transcript.txt"
+generated_file = "generatedTranscripts/Dolmetscher-generated-transcript.txt"
 
 # Dateien einlesen
-with open(ref_file, "r", encoding="utf-8") as r, open(gen_file, "r", encoding="utf-8") as g:
+with open(reference_file, "r", encoding="utf-8") as r, open(generated_file, "r", encoding="utf-8") as g:
     referenz = r.read()
     generated = g.read()
 

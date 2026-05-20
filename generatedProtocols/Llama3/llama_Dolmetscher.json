@@ -1,0 +1,34 @@
+[
+    {
+        "frage": "Frau Berg, bevor wir anfangen, woher kommen Sie?",
+        "antwort": "Ich komme aus Polen, aus Katowice."
+    },
+    {
+        "frage": "Sie sprechen gar kein Deutsch?",
+        "antwort": "Nein, eigentlich nicht."
+    },
+    {
+        "frage": "Was haben Sie für Beschwerden?",
+        "antwort": "Länge."
+    },
+    {
+        "frage": "Können Sie mir bitte erzählen was gestern Abend passiert ist?",
+        "antwort": "Die Patientin hat gesagt, dass sie gestern Abend in einer Bar gewesen ist, ein paar Gläser Wein getrunken hat, dann hat sie was gegessen und nach dem Essen wurde ihr wirklich übel."
+    },
+    {
+        "frage": "Können Sie bitte noch mal wortwörtlich übersetzen was die Patientin gesagt hat?",
+        "antwort": "Die Patientin hat gesagt, dass sie gestern Abend in einer Bar gewesen ist, ein paar Gläser Wein getrunken hat, dann hat sie was gegessen und nach dem Essen wurde ihr wirklich übel."
+    },
+    {
+        "frage": "Frau Berg, bekommen Sie gut Luft?",
+        "antwort": "Können Sie jetzt gut aufstehen?"
+    },
+    {
+        "frage": "Was sind Sie von Beruf?",
+        "antwort": "Ich bin Reporterin in unserer Gazette Olivia."
+    },
+    {
+        "frage": "Wie lange werde ich noch im Krankenhaus bleiben müssen, oder kann ich nach diesen Untersuchungen gleich nach Hause gehen, oder wie sieht das aus?",
+        "antwort": "Es hängt von den Befunden sehr ab. Das können wir heute Nachmittag besprechen."
+    }
+]
