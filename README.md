@@ -68,7 +68,7 @@ streamlit run app.py
 
 ### Ablauf in der App
 
-1. Eine Audiodatei des Gesprächs hochladen.
+1. Eine Audiodatei des Gesprächs hochladen (Im Ordner `audioFiles` sind Beispielgespräche abgelegt).
 2. Im Textfeld die Fragen eingeben, die das LLM aus dem Gespräch beantworten soll.
 3. Das Sprachmodell auswählen, das die Fragen beantwortet (Meta Llama 3, DeepSeek R1, Google Gemma 4).
 4. Auf "Start Protokollierung" klicken.
