@@ -2,7 +2,7 @@
 
 ## Übersicht
 
-Diese Prototyp-Applikation wurde im Rahmen einer Bachelorarbeit entwickelt und bietet eine automatisierte Pipeline zur Erstellung von Gesprächsprotokollen. Der primäre Fokus liegt auf sensiblen Behördengesprächen, welche auf Schweizerdeutsch gehalten werden. Das Ziel ist es, den zeitaufwendigen Prozess der manuellen Protokollierung durch den Einsatz von Large Language Models und weiteren KI-Technologien zu automatisieren, ohne dabei den Datenschutz zu vernachlässigen.
+Diese Prototyp-Applikation wurde im Rahmen einer Bachelorarbeit entwickelt und bietet eine automatisierte Pipeline zur Erstellung von Gesprächsprotokollen. Der primäre Fokus liegt auf sensiblen Behördengesprächen, welche auf Schweizerdeutsch geführt werden. Das Ziel ist es, den zeitaufwendigen Prozess der manuellen Protokollierung durch den Einsatz von Large Language Models und weiteren KI-Technologien zu automatisieren, ohne dabei den Datenschutz zu vernachlässigen. In diesem GitHub-Repository befinden sich ausschliesslich Beispieldaten und keine realen Daten aus Behördengesprächen.
 
 ## Hauptfunktionen
 - Transkription: Automatische Umwandlung von Audio in hochdeutschen Text mittels OpenAI Whisper.
@@ -92,7 +92,7 @@ Diese müssen im Skript bei den Variablen `reference_file` und `generated_file` 
 
 - __`der.py`__: Das Skript berechnet aus den beiden Dateien die Diarization Error Rate.
   - Dateityp: `.json`
-  - Json-Struktur:
+  - JSON-Struktur:
 
 ```jsonc
 [
@@ -109,7 +109,7 @@ Diese müssen im Skript bei den Variablen `reference_file` und `generated_file` 
 
 - __`bertscore.py`__: Das Skript berechnet aus den beiden Dateien den BERT-Score als Precision, Recall und F1-Score.
   - Dateityp: `.json`
-  - Json-Struktur:
+  - JSON-Struktur:
 
 ```jsonc
 [
